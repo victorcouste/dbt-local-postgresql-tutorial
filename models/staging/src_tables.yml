@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: tutorial_data
+    database: mydatabase
+    schema: public
+    description: Tables used in dbt tutorials
+    tables:
+
+      - name: shop_orders
+        identifier: jaffle_shop_orders
+        description: One record per order. Includes cancelled and deleted orders.
+        columns:
+          - name: id
+            description: Primary key of the orders table
+            tests:
+              - unique
+              - not_null
+          - name: status
+            description: Note that the status can change over time
+
+      - name: shop_customers
+        identifier: jaffle_shop_customers
+        description: One record per customer.
+
+      - name: payments
+        identifier: stripe_payments
+        description: Payment table used in dbt tutorials
+
